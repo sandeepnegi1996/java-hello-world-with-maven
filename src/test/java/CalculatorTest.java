@@ -24,5 +24,20 @@ public class CalculatorTest {
 
 
     }
+
+
+    @Test
+   public void test_Two_NegativeValues_Multiplication() {
+        assertEquals(35, calculator.multiply(-5,-7));
+    }
+
+
+    @Test
+    public void test_OnePostivie_And_OneNegative_Multiplication() {
+         assertEquals(-35, calculator.multiply(5,-7));
+     }
+
+
+
     
 }

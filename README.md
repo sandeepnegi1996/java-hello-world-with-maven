@@ -133,6 +133,11 @@ The install goal will compile, test, and package your project’s code and then 
 
 Speaking of dependencies, now it’s time to declare dependencies in the Maven build.
 
+
+`mvn test`
+
+This command will run the test cases and show the results of the tests 
+
 ### Declare Dependencies
 ---
 
@@ -250,3 +255,73 @@ Here’s the completed `pom.xml` file:
 + To run this project run the following command.
 
     `java -cp target/jb-hello-world-maven-0.1.0.jar hello.HelloWorld`
+
+
+### Junit Testcases
+1. To run testcases first add the dependency for junit check from the pom.xml
+2. Then create the folder `src/test/java/CalculatorTest.java`
+3. create simple methods to test your code 
+4. to run test `mvn test`
+
+#### Calculator Class
+```
+package hello;
+
+public class Calculator {
+    
+    public int multiply(int a, int b) {
+        return a*b;
+    }
+}
+
+```
+
+
+#### CalculatorTest Class
+
+```
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import hello.Calculator;
+
+public class CalculatorTest {
+
+    private Calculator calculator;
+
+    @Before
+    public void setUp() {
+        calculator=new Calculator();
+    }
+
+
+    @Test
+    public void test_PostiveNumber_Multiplication() {
+
+        int answer=calculator.multiply(5, 7);
+        
+        assertEquals("multiply postitive number",35,answer);
+
+
+    }
+
+
+    @Test
+   public void test_Two_NegativeValues_Multiplication() {
+        assertEquals(35, calculator.multiply(-5,-7));
+    }
+
+
+    @Test
+    public void test_OnePostivie_And_OneNegative_Multiplication() {
+         assertEquals(-35, calculator.multiply(5,-7));
+     }
+
+
+
+    
+}
+
+```
