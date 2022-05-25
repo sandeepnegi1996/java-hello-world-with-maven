@@ -51,5 +51,14 @@ public class TemperatureServiceTest {
         int expected=tempService.temperatureSensorData();
         assertEquals(expected, actual);
     }
-    
+
+
+    //throw exception using mockito
+
+    @Test
+    public void test_Exception() {
+        when(tempService.temperatureSensorData())
+        .thenThrow(new NumberFormatException("temperature is not appropiate"));
+        
+    }
 }
